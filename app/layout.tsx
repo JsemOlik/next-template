@@ -52,7 +52,7 @@ export default function RootLayout({
               <SignedOut>
                 <SignInButton mode="modal" />
                 <SignUpButton mode="modal">
-                  <Button>Sign Up</Button>
+                  <Button variant="cta">Sign Up</Button>
                 </SignUpButton>
               </SignedOut>
               {/* Show the user button when the user is signed in */}
