@@ -3,7 +3,8 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
+import "../app/globals.css";
 
 export function ClerkThemeProvider({
   children,
@@ -19,26 +20,21 @@ export function ClerkThemeProvider({
     setMounted(true);
   }, []);
 
-  if (!mounted) {
-    return <ClerkProvider>{children}</ClerkProvider>;
-  }
-
-  return (
-    <ClerkProvider
-      appearance={{
-        baseTheme: resolvedTheme === "dark" ? dark : undefined,
-        variables: {
-          colorPrimary: "var(--primary)",
-          colorPrimaryForeground: "var(--primary-foreground)",
-          colorBackground: "var(--background)",
-          colorNeutral: "var(--foreground)",
-          colorForeground: "var(--foreground)",
-          colorInputForeground: "var(--input-foreground)",
-          colorInput: "var(--input)",
-        },
-      }}
-    >
-      {children}
-    </ClerkProvider>
+  const appearance = useMemo(
+    () => ({
+      baseTheme: mounted && resolvedTheme === "dark" ? dark : undefined,
+      variables: {
+        colorPrimary: "oklch(0.586 0.253 17.585)", // Use raw value if possible or keep var
+        colorPrimaryForeground: "var(--primary-foreground)",
+        colorBackground: "var(--background)",
+        colorNeutral: "var(--foreground)",
+        colorForeground: "var(--foreground)",
+        colorInputForeground: "var(--input-foreground)",
+        colorInput: "var(--input)",
+      },
+    }),
+    [mounted, resolvedTheme],
   );
+
+  return <ClerkProvider appearance={appearance}>{children}</ClerkProvider>;
 }

@@ -1,12 +1,20 @@
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen w-full flex-col lg:flex-row">
       {/* Left side: Branding/Marketing */}
       <div className="bg-zinc-950 relative hidden flex-col p-10 text-white lg:flex lg:w-3/5 lg:min-h-screen">
-        <div className="absolute inset-0 bg-primary/80" />
+        <Image
+          src="/coffee-bag.webp"
+          alt="Coffee bag background"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0" />
         <div className="relative z-20 flex items-center text-lg font-medium">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +43,7 @@ export function AuthLayout({ children }: { children: React.ReactNode }) {
       </div>
 
       {/* Right side: Auth Component */}
-      <div className="flex flex-1 items-center justify-center bg-background p-8 lg:w-2/5">
+      <div className="relative z-10 flex flex-1 items-center justify-center bg-background p-8 lg:w-2/5 animate-in fade-in duration-500">
         <div className="w-full max-w-[400px]">{children}</div>
       </div>
     </div>
