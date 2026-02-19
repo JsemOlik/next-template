@@ -27,6 +27,10 @@ export function ClerkThemeProvider({
     <ClerkProvider
       appearance={{
         baseTheme: resolvedTheme === "dark" ? dark : undefined,
+        variables: {
+          colorPrimary: "var(--primary)",
+          colorPrimaryForeground: "var(--primary-foreground)",
+        },
       }}
     >
       {children}
