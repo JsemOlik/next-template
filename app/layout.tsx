@@ -3,15 +3,7 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ClerkThemeProvider } from "@/components/clerk-theme-provider";
-import {
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
-import { Button } from "@/components/ui/button";
-import { ColorToggle } from "@/components/color-toggle";
+import { Navbar } from "@/components/navbar";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -47,20 +39,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ClerkThemeProvider>
-            <header className="flex justify-end items-center p-4 gap-4 h-16">
-              {/* Show the sign-in and sign-up buttons when the user is signed out */}
-              <SignedOut>
-                <SignInButton mode="modal" />
-                <SignUpButton mode="modal">
-                  <Button variant="cta">Sign Up</Button>
-                </SignUpButton>
-              </SignedOut>
-              {/* Show the user button when the user is signed in */}
-              <SignedIn>
-                <UserButton />
-              </SignedIn>
-              <ColorToggle />
-            </header>
+            <Navbar />
             {children}
           </ClerkThemeProvider>
         </ThemeProvider>
