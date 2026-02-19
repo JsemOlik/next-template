@@ -2,15 +2,14 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ClerkThemeProvider } from "@/components/clerk-theme-provider";
 import {
-  ClerkProvider,
   SignInButton,
   SignUpButton,
   SignedIn,
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
 import { Button } from "@/components/ui/button";
 import { ColorToggle } from "@/components/color-toggle";
 
@@ -37,21 +36,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider
-      appearance={{
-        theme: dark,
-      }}
-    >
-      <html lang="en" className={inter.variable} suppressHydrationWarning>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
         >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
+          <ClerkThemeProvider>
             <header className="flex justify-end items-center p-4 gap-4 h-16">
               {/* Show the sign-in and sign-up buttons when the user is signed out */}
               <SignedOut>
@@ -67,9 +62,9 @@ export default function RootLayout({
               <ColorToggle />
             </header>
             {children}
-          </ThemeProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+          </ClerkThemeProvider>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }
