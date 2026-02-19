@@ -6,7 +6,7 @@ export function AuthLayout({ children }: { children: React.ReactNode }) {
     <div className="flex min-h-screen w-full flex-col lg:flex-row">
       {/* Left side: Branding/Marketing */}
       <div className="bg-zinc-950 relative hidden flex-col p-10 text-white lg:flex lg:w-3/5 lg:min-h-screen">
-        <div className="absolute inset-0 bg-primary/60" />
+        <div className="absolute inset-0 bg-primary/80" />
         <div className="relative z-20 flex items-center text-lg font-medium">
           <svg
             xmlns="http://www.w3.org/2000/svg"
