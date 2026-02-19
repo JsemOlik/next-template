@@ -14,11 +14,19 @@ export function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 flex justify-end items-center p-4 gap-4 h-16 w-full border-b border-white bg-background/80 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 flex justify-end items-center px-4 gap-4 h-16 w-full border-b border-white bg-background/80 backdrop-blur-sm">
       <SignedOut>
-        <Link href="/sign-in">Sign In</Link>
-        <Link href="/sign-up">
-          <Button variant="cta">Sign Up</Button>
+        <div className="flex items-center gap-4">
+          <Link href="/sign-in">
+            <Button variant="ghostCta" className="text-md px-2">
+              Sign In
+            </Button>
+          </Link>
+        </div>
+        <Link href="/sign-up" className="h-full self-stretch flex">
+          <Button variant="cta" className="h-full border-y-0 p-6 text-md">
+            Get Started
+          </Button>
         </Link>
       </SignedOut>
       <SignedIn>
