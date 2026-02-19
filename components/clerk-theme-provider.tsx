@@ -30,6 +30,11 @@ export function ClerkThemeProvider({
         variables: {
           colorPrimary: "var(--primary)",
           colorPrimaryForeground: "var(--primary-foreground)",
+          colorBackground: "var(--background)",
+          colorNeutral: "var(--foreground)",
+          colorForeground: "var(--foreground)",
+          colorInputForeground: "var(--input-foreground)",
+          colorInput: "var(--input)",
         },
       }}
     >
