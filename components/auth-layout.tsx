@@ -1,4 +1,5 @@
 import * as React from "react";
+import Link from "next/link";
 
 export function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -19,7 +20,7 @@ export function AuthLayout({ children }: { children: React.ReactNode }) {
           >
             <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
           </svg>
-          Acme Inc
+          <Link href="/">Acme Inc</Link>
         </div>
         <div className="relative z-20 mt-auto">
           <blockquote className="space-y-2">
